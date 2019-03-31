@@ -1,0 +1,12 @@
+FROM rkttu/cygwin-python3:1809-core
+
+LABEL name="Cygwin UWSGI Python 3 Container"
+LABEL description="This container is a Cygwin based Python container designed to use Cygwin's Bash shell by default. You can install the package using apt-cyg."
+LABEL maintainer="Jung Hyun Nam <rkttu@rkttu.com>"
+
+SHELL ["/tools/cygwin/bin/bash.exe", "--login", "-i"]
+CMD ["/tools/cygwin/bin/bash.exe", "--login", "-i"]
+
+RUN apt-cyg install libcrypt-devel libintl-devel
+ADD install.sh /install.sh
+RUN /cygdrive/c/install.sh
